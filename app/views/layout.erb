@@ -22,6 +22,12 @@
     <h4>Flashcards</h4>
     <br>
     <ul>
+      <% if logged_in? %>
+        <form action='/logout' method='post'>
+          <input type='hidden' name='_method' value='delete'>
+          <input type='submit' value='logout'>
+        </form>
+      <%end%>
       <li><a href="/login">login</a></li>
       <li><a href="/">home</a></li>
     <ul>

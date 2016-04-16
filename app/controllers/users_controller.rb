@@ -8,18 +8,30 @@ get '/users/new' do
 end
 
 get '/users/:id' do
+  required_logged_in
   @user = User.find_by(id: params[:id])
-  erb :'users/show'
+  if @user && session[:user_id] == @user.id
+    erb :'users/show'
+  else
+    @message = "You must log in to see this page"
+    erb :'/login'
+  end
 end
 
 post '/users/new' do
-  @user = User.create(params)
+  @user = User.new(params)
   if @user.save
     redirect '/login'
   else
     @errors = @user.errors.full_messages
     erb :'users/errors'
   end
+end
+
+delete '/users' do
+  @user = User.find_by(id: session[:user_id])
+  @user.destroy
+  redirect '/'
 end
 
 

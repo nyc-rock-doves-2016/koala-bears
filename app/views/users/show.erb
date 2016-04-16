@@ -1,6 +1,12 @@
 <h2>Welcome, <%=@user.username%></h2>
 
-<a href='/sessions/logout'>Logout</a>
+
+<h4>Delete User:</h4>
+
+<form action='/users' method='post'>
+  <input type='hidden' name='_method' value='delete'>
+  <input type='submit' value='Delete User'>
+</form>
 
 <p>Name of deck</p>
 <p> DATE | Cards in Deck | First Guess Correct | Total Guesses </p>

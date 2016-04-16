@@ -1,5 +1,9 @@
-<h2>Flashcard Decks</h2>
+<h2>Click on a deck if you want to play killer flash cards</h2>
 
-<p> List all decks here </p>
+<ul>
+  <% @decks.each do |deck| %>
+    <li><a href="/decks/<%= deck.id %>"><%= p deck.name %></a></li>
+  <% end %>
+</ul>
 
 <a href="/users/new">Create a new user</a>
