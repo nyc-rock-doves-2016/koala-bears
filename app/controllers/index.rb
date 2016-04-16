@@ -1,4 +1,4 @@
 get '/' do
-
-erb :'index'
+  @decks = Deck.all
+  erb :'index'
 end
