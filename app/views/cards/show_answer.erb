@@ -1,0 +1,14 @@
+
+<%if @answer == "t" %>
+  <%= p "you got that one right!" %>
+<%else%>
+  <%= p "You got that one wrong! The correct answer is." %>
+  <%= p @card.answer%>
+<%end%>
+
+<!-- @guess @answer @card -->
+
+ <form action='/guesses/new' method='GET'>
+  <input type='hidden' name='previous_guess_id' value='<%=@guess.id%>'>
+  <input type='submit' value='Click to continue to the next question'>
+</form>

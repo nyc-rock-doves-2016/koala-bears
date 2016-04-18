@@ -19,7 +19,7 @@
 </head>
 <body>
   <header>
-    <h4>Flashcards</h4>
+    <h1>Flashcards</h1>
     <br>
     <ul>
       <% if logged_in? %>
@@ -27,8 +27,10 @@
           <input type='hidden' name='_method' value='delete'>
           <input type='submit' value='logout'>
         </form>
+      <% else %>
+        <li><a href="/login">login</a></li>
+        <li><a href="/users/new">Register</a></li>
       <%end%>
-      <li><a href="/login">login</a></li>
       <li><a href="/">home</a></li>
     <ul>
   </header>

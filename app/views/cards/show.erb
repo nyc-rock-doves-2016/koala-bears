@@ -1,0 +1,15 @@
+
+
+
+  <%= @sampled_card.question %>
+
+
+  <h4>Enter your guess</h4>
+  <form action='/guesses/new' method='POST'>
+    <input type='hidden' name="card_answer" value="<%=@sampled_card.answer%>">
+    <input type='hidden' name="sampled_card_id" value="<%=@sampled_card.id%>">
+    <input type='hidden' name="round_id" value="<%=@round.id%>">
+    <input type='text' name='human_answer'></br></br>
+    <input type='submit' value='Submit your answer'>
+  </form>
+
