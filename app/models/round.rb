@@ -9,9 +9,7 @@ class Round < ActiveRecord::Base
     correct_guess_array.each do |guess|
       correct_card_array << Card.find_by(id: guess.card_id)
     end
-
     all_cards = Card.all.to_a
     (all_cards - correct_card_array).sample
-
   end
 end

@@ -11,10 +11,10 @@ get '/guesses/new' do
   @user = find_by(id: @round.user_id)
   @sampled_card = @round.get_next_card(@guess)
 
-  if @sampled_card == nil
+  # if @sampled_card == nil
 
-    erb :'/rounds/show'
-  end
+  #   erb :'/rounds/show'
+  # end
 
   erb :'/cards/show'
 end
@@ -24,7 +24,7 @@ get '/guesses/:id' do
   @round = Round.find_by(id: @guess.round_id)
   @answer = @guess.correct?
   @card = Card.find_by(id: @guess.card_id)
-  @wrong_count = @guess.wrong_count(@answer, @round)
+  # @wrong_count = @guess.wrong_count(@answer, @round)
 
   erb :'/cards/show_answer'
 end
