@@ -3,19 +3,13 @@ class Round < ActiveRecord::Base
   belongs_to :user
 
   def get_next_card(guess)
-    previous_guess = Guess.find_by(id: guess.id)
 
-    previous_card = Card.find_by(id: previous_guess.card_id)
-    cards_in_deck_array = Card.where(deck_id: previous_card.deck_id).to_a
-
-    previous_card = previous_card(previous_guess)
-    cards_in_deck_array.delete(previous_card)
-
-    new_sampled_card = cards_in_deck_array.sample
-  end
-
-
-  def previous_card(previous_guess)
-    Card.find_by(id: previous_guess.card_id)
+    correct_guess_array = Guess.all.where(correct?: "t")
+    correct_card_array = []
+    correct_guess_array.each do |guess|
+      correct_card_array << Card.find_by(id: guess.card_id)
+    end
+    all_cards = Card.all.to_a
+    (all_cards - correct_card_array).sample
   end
 end
