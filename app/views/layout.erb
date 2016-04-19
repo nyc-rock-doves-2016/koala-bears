@@ -23,6 +23,9 @@
     <br>
     <ul>
       <% if logged_in? %>
+        <form action='/users/<%= session[:user_id] %>' method='get'>
+          <input type='submit' value='user profile'>
+        </form>
         <form action='/logout' method='post'>
           <input type='hidden' name='_method' value='delete'>
           <input type='submit' value='logout'>
