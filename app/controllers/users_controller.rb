@@ -9,8 +9,13 @@ end
 
 get '/users/:id' do
   required_logged_in
-  @user = User.find_by(id: params[:id])
+    @user = User.find_by(id: params[:id])
   if @user && session[:user_id] == @user.id
+    # @stat = []
+    # @user.rounds.each do |round|
+    #   @stat << round.stats(round.deck)
+    # end
+
     erb :'users/show'
   else
     @message = "You must log in to see this page"

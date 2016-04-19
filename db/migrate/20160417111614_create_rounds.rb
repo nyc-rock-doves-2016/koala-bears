@@ -3,7 +3,7 @@ class CreateRounds < ActiveRecord::Migration
     create_table :rounds do |t|
       t.integer :user_id
       t.integer :deck_id, null: false
-      t.string :stats
+      t.integer :stats, default: 0
 
       t.timestamps null: false
     end

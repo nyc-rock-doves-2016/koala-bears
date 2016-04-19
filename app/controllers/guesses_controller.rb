@@ -8,13 +8,9 @@ get '/guesses/new' do
   @guess = Guess.find_by(id: params[:previous_guess_id]) #previous guess
   @round = Round.find_by(id: @guess.round_id) #current round
   @deck = Deck.find_by(id: @round.deck_id)
-  @user = find_by(id: @round.user_id)
   @sampled_card = @round.get_next_card(@guess)
-
-  # if @sampled_card == nil
-
-  #   erb :'/rounds/show'
-  # end
+  @correct_first_time = @round.correct_first_time(@deck)
+  @stats = @round.stats(@deck)
 
   erb :'/cards/show'
 end

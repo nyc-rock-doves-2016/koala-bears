@@ -1,8 +1,6 @@
 
-
-
+<% if @sampled_card %>
   <%= @sampled_card.question %>
-
 
   <h4>Enter your guess</h4>
   <form action='/guesses/new' method='POST'>
@@ -12,4 +10,8 @@
     <input type='text' name='human_answer'></br></br>
     <input type='submit' value='Submit your answer'>
   </form>
+<% else %>
 
+  <h1>GAME OVER</h1>
+  <h3>You answered <%= p @correct_first_time %> questions correctly on the first time out of a total of <%= p @deck.cards.length %> questions!</h3>
+<% end %>
