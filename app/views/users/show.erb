@@ -1,22 +1,14 @@
 <h2>Welcome, <%=@user.username%></h2>
 
+<p> You've played <%=@user.rounds.length%> total rounds </p>
 
-<h4>Delete User:</h4>
+<ul>
+  <% @user.rounds.each do |round| %>
+    <li>From the <%= p round.deck.name %> deck you had <%= p round.stats(round.deck) %> correct on the first try out of <%= p round.deck.cards.length %> questions.</li>
+  <% end %>
+<ul>
 
 <form action='/users' method='post'>
   <input type='hidden' name='_method' value='delete'>
   <input type='submit' value='Delete User'>
 </form>
-
-<p>Name of deck</p></br>
-<p> DATE | Cards in Deck | First Guess Correct | Total Guesses </p>
-
-
-<p> You've played <%=@user.rounds.length%> total rounds </p>
-
-<ul>
-  <% @user.rounds.each do |round| %>
-    <li>From the <%= p round.deck.name %> deck you had <%= p round.stats(round.deck) %> correct on the first try out of  <%= p round.deck.cards.length %> questions.</li>
-  <% end %>
-<ul>
-<!-- @round.correct_first_time(@deck) -->

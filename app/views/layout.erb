@@ -12,6 +12,8 @@
   -->
   <link rel="stylesheet" href="/css/application.css">
 
+  <link href='https://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
@@ -23,20 +25,28 @@
     <br>
     <ul>
       <% if logged_in? %>
-        <form action='/users/<%= session[:user_id] %>' method='get'>
+        <li><form action='/users/<%= session[:user_id] %>' method='get'>
           <input type='submit' value='user profile'>
-        </form>
-        <form action='/logout' method='post'>
+        </form></li>
+        <li><form action='/logout' method='post'>
           <input type='hidden' name='_method' value='delete'>
           <input type='submit' value='logout'>
-        </form>
+        </form></li>
       <% else %>
-        <li><a href="/login">login</a></li>
-        <li><a href="/users/new">Register</a></li>
+        <!-- <li><a href="/login">login</a></li> -->
+        <li><form action='/login' method='get'>
+          <input type='submit' value='login'></form></li>
+        <!-- <li><a href="/users/new">Register</a></li> -->
+        <li><form action='/users/new' method='get'>
+          <input type='submit' value='register'></form></li>
       <%end%>
-      <li><a href="/">home</a></li>
+      <!-- <li><a href="/">home</a></li> -->
+      <li><form action='/' method='get'>
+          <input type='submit' value='home'></form></li>
     <ul>
   </header>
+  <div class="container">
   <%= yield %>
+  </div>
 </body>
 </html>
